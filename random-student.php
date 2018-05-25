@@ -33,17 +33,23 @@ if ($hasRosters) {
 }*/
 
 echo('<div class="container-fluid borderDashed">
-    <h2>Result</h2>
-    <div class="row">
-        <div class="col-sm-11 col-sm-offset-1 text-left">
-            <h4>The random student chosen is:</h4>
+     <div class="row">
+        <div class="col-sm-12 text-center">
+            <h2 class = "groupNumber">Result</h2>
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h4 class="groupNumber">The randomly chosen Student:</h4>
+        </div>
+    </div><div class="row">
+    <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
     <div class="row">
         <div class="col-sm-4 col-sm-offset-4 text-center">
             <h1 class="nameTheme">'.$name.'</h1>
         </div>
     </div>
+    <p>_____________________________________________________________________________________________________________________</p>
     <a href="random-student.php" class="btn btn-primary"  data-toggle="modal">Pick again</a>
 </div>
 ');

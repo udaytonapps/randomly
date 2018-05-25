@@ -38,11 +38,9 @@ if ($hasRosters) {
 echo('
 <div class="container-fluid borderDashed">
     <div class="row">
-        <div class="col-sm-3 text-right question-actions">
-            <a href="#Edit_Wrap_Up_Text" class="btn btn-warning" data-toggle="modal">
-                <span aria-hidden="true" title="Choose Groups"></span><span>Choose Groups</span>
-            </a>
-        </div>
+        <a href="#Edit_Wrap_Up_Text" class="btn btn-warning" data-toggle="modal">
+            <span aria-hidden="true" title="Choose Groups"></span><span>Choose Groups</span>
+        </a>
         <!-- Edit Wrap Up Question Text Modal -->
         <div class="modal fade" id="Edit_Wrap_Up_Text" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
@@ -54,37 +52,40 @@ echo('
                         <div class="modal-body">
                             <input type="hidden" name="xGroups_Used" value="xGroups_Used"/>
                                 I would like<input type="text" name="xGroups" value="">groups.
-                                                    <input type="submit" class="btn btn-success" value="Submit">
+                            <input type="submit" class="btn btn-success" value="Submit">
                         </div>
                     </form>
-                        <h4>OR</h4>
-                        <form method="post"  action="actions/makeGroups.php">
-                            <div class="modal-body">
-                                <input type="hidden" name="xPerGroup_Used" value="xPerGroup_Used"/>
-                                    I would like<input type="text" name="xPerGroup" value="">students in each group
-                                <input type="submit" class="btn btn-success" value="Submit">
-                            </div>
-                        </form>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <h4>OR</h4>
+                    <form method="post"  action="actions/makeGroups.php">
+                        <div class="modal-body">
+                            <input type="hidden" name="xPerGroup_Used" value="xPerGroup_Used"/>
+                                I would like<input type="text" name="xPerGroup" value="">students in each group
+                            <input type="submit" class="btn btn-success" value="Submit">
                         </div>
-
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    </div>
                 </div>
             </div>
+        </div>
     </div>
-</div>');
+');
 
 if($_SESSION['groupType'] > 0){
-
-    echo('<h2>Result</h2>
+    echo('
     <div class="row">
-        <div class="col-sm-11 col-sm-offset-1 text-left">
-            <h4>The randomly chosen groups are:</h4>
+        <div class="col-sm-12 text-center">
+            <h2 class = "groupNumber">Result</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h4 class="groupNumber">The randomly chosen groups are:</h4>
         </div>
     </div><div class="row">
     ');
-    echo ("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-
+    echo ("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
     if($_SESSION['groups'] > sizeof($names)){
         $_SESSION['groups'] = sizeof($names);
@@ -95,61 +96,120 @@ if($_SESSION['groupType'] > 0){
     $remain = sizeof($names) % $_SESSION['groups'];
     $i = 0;
 }
-
+$newRow = true;
 if($_SESSION['groupType'] == 1) {
     $inGroup = floor(sizeof($names) / $_SESSION['groups']);
     for($x = 0; $x < $_SESSION['groups']; $x++){
-        for($y = 0; $y < $inGroup; $y++) {
+        $groupNum = $x + 1;
+        if($newRow) {
             echo('
                 <div class="row">
-                    <div class="col-sm-4 col-sm-offset-4 text-center nameTheme">
-                        <h1>' . $names[$i] . '</h1>
-                    </div>
-                </div>
+                <div class="col-sm-4 col-sm-offset-1 text-center nameTheme">
+            ');
+        } else {
+            echo('
+                <div class="col-sm-4 col-sm-offset-2 text-center nameTheme">
+            ');
+        }
+        echo('
+                <h1 class="groupNumber">Group '.$groupNum.'</h1>
+            ');
+        for ($y = 0; $y < $inGroup; $y++) {
+            echo('
+                <h1>' . $names[$i] . '</h1>
             ');
             $i++;
         }
-        if($remain > 0){
+        if ($remain > 0) {
             echo('
-                <div class="row">
-                    <div class="col-sm-4 col-sm-offset-4 text-center nameTheme">
-                        <h1>' . $names[$i] . '</h1>
-                    </div>
-                </div>
+                <h1>' . $names[$i] . '</h1>
             ');
             $i++;
             $remain--;
         }
-        echo ("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        if($newRow) {
+            $newRow = false;
+            echo('
+                </div>
+            ');
+        } else {
+            $newRow = true;
+            echo('
+                </div></div>
+                <p>_____________________________________________________________________________________________________________________</p>
+            ');
+        }
     }
 } else if($_SESSION['groupType'] == 2) {
     $groups = floor(sizeof($names) / $_SESSION['groups']);
     for ($x = 0; $x < $groups; $x++) {
+        $groupNum = $x + 1;
+
+        if($newRow) {
+            echo('
+                <div class="row">
+                <div class="col-sm-4 col-sm-offset-1 text-center nameTheme">
+            ');
+        } else {
+            echo('
+                <div class="col-sm-4 col-sm-offset-2 text-center nameTheme">
+            ');
+        }
+
+        echo('
+                <h1 class="groupNumber">Group '.$groupNum.'</h1>
+            ');
         for ($y = 0; $y < $_SESSION['groups']; $y++) {
             echo('
-                <div class="row">
-                    <div class="col-sm-4 col-sm-offset-4 text-center nameTheme">
-                        <h1>' . $names[$i] . '</h1>
-                    </div>
-                </div>
+                <h1>' . $names[$i] . '</h1>
             ');
             $i++;
         }
-        echo ("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        if($newRow) {
+            $newRow = false;
+            echo('
+                </div>
+            ');
+        } else {
+            $newRow = true;
+            echo('
+                </div></div>
+                <p>_____________________________________________________________________________________________________________________</p>
+            ');
+        }
     }
     if ($remain > 0) {
-        echo ('<h3>Leftover</h3>');
-        for ($x = 0; $x < $remain; $x++) {
+        if(!$newRow){
+            echo('
+                <div class="col-sm-4 col-sm-offset-1 text-center nameTheme">
+            ');
+        }else{
             echo('
                 <div class="row">
-                    <div class="col-sm-4 col-sm-offset-4 text-center nameTheme">
-                        <h1>' . $names[$i] . '</h1>
-                    </div>
-                </div>
+                <div class="col-sm-4 col-sm-offset-4 text-center nameTheme">
+            ');
+        }
+
+        echo('
+             <h1 class="groupNumber">Extras</h1><h3></h3>
+            ');
+        for ($x = 0; $x < $remain; $x++) {
+            echo('
+                <h1>' . $names[$i] . '</h1>
             ');
             $i++;
         }
-        echo("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        if(!$newRow){
+            echo('
+                </div></div>
+                <p>_____________________________________________________________________________________________________________________</p>
+            ');
+        }else{
+            echo('
+                </div></div>
+                <p>_____________________________________________________________________________________________________________________</p>
+            ');
+        }
     }
 }
 echo('</div></div>');
