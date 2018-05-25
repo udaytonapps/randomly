@@ -4,6 +4,11 @@
     font-weight: bold;
 }
 
+.groupNumber{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 .borderDashed{
     border-style: dashed;
 }
