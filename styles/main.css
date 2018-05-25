@@ -1,1 +1,9 @@
 /* Main CSS file */
+.nameTheme{
+    background-color: #2eeeee;
+    font-weight: bold;
+}
+
+.borderDashed{
+    border-style: dashed;
+}
