@@ -19,7 +19,7 @@ $OUTPUT->bodyStart();
 
 include("menu.php");
 
-$names = array("David", "Ryan", "James", "Julianne", "Leah", "Stephanie", "Aidan", "Paul", "RyMan");
+$names = array("David", "Ryan", "James", "Julianne", "Leah", "Stephanie", "Aidan", "Paul", "RyMan" , "!!!!", "@@@", ")))))");
 
 $num = rand (0,sizeof($names) - 1);
 
@@ -36,13 +36,10 @@ if ($hasRosters) {
 
 
 echo('
-<div class="container-fluid borderDashed">
+<div class="container-fluid">
     <div class="row">
-        <a href="#Edit_Wrap_Up_Text" class="btn btn-warning" data-toggle="modal">
-            <span aria-hidden="true" title="Choose Groups"></span><span>Choose Groups</span>
-        </a>
         <!-- Edit Wrap Up Question Text Modal -->
-        <div class="modal fade" id="Edit_Wrap_Up_Text" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal fade" id="randomGroupsModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -50,17 +47,33 @@ echo('
                     </div>
                     <form method="post"  action="actions/makeGroups.php">
                         <div class="modal-body">
-                            <input type="hidden" name="xGroups_Used" value="xGroups_Used"/>
-                                I would like<input type="text" name="xGroups" value="">groups.
-                            <input type="submit" class="btn btn-success" value="Submit">
+                            <div class="row">
+                                <div class="col-sm-10 text-left">
+                                    <input type="hidden" name="xGroups_Used" value="xGroups_Used"/>
+                                    I would like <input type="text" name="xGroups" value=""> groups.
+                                </div>
+                                <div class="col-sm-2 text-left">
+                                    <input type="submit" class="btn btn-success" value="Submit">
+                                </div>
+                            </div>
                         </div>
                     </form>
-                    <h4>OR</h4>
+                    <div class="row">
+                        <div class="col-sm-11 text-center">
+                            <h4>OR</h4>
+                        </div>
+                    </div>
                     <form method="post"  action="actions/makeGroups.php">
                         <div class="modal-body">
-                            <input type="hidden" name="xPerGroup_Used" value="xPerGroup_Used"/>
-                                I would like<input type="text" name="xPerGroup" value="">students in each group
-                            <input type="submit" class="btn btn-success" value="Submit">
+                            <div class="row">
+                                <div class="col-sm-10 text-left">
+                                    <input type="hidden" name="xPerGroup_Used" value="xPerGroup_Used"/>
+                                    I would like <input type="text" name="xPerGroup" value=""> students in each group
+                                </div>
+                                <div class="col-sm-2 text-left">
+                                    <input type="submit" class="btn btn-success" value="Submit">
+                                </div>
+                            </div>
                         </div>
                     </form>
                     <div class="modal-footer">
@@ -75,8 +88,8 @@ echo('
 if($_SESSION['groupType'] > 0){
     echo('
     <div class="row">
-        <div class="col-sm-12 text-center">
-            <h2 class = "groupNumber">Result</h2>
+        <div class="col-sm-12 text-left col-sm-offset-1">
+            <h2 class = "groupNumber">Random Groups</h2>
         </div>
     </div>
     <div class="row">
@@ -85,7 +98,6 @@ if($_SESSION['groupType'] > 0){
         </div>
     </div><div class="row">
     ');
-    echo ("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
     if($_SESSION['groups'] > sizeof($names)){
         $_SESSION['groups'] = sizeof($names);
@@ -104,25 +116,26 @@ if($_SESSION['groupType'] == 1) {
         if($newRow) {
             echo('
                 <div class="row">
-                <div class="col-sm-4 col-sm-offset-1 text-center nameTheme">
+                <div class="col-sm-4 col-sm-offset-1 text-center alert-success">
             ');
         } else {
             echo('
-                <div class="col-sm-4 col-sm-offset-2 text-center nameTheme">
+                <div class="col-sm-4 col-sm-offset-2 text-center alert-success">
             ');
         }
         echo('
                 <h1 class="groupNumber">Group '.$groupNum.'</h1>
+                <ol class="listOrderTop">
             ');
         for ($y = 0; $y < $inGroup; $y++) {
             echo('
-                <h1>' . $names[$i] . '</h1>
+                <li class="listOrder">' . $names[$i] . '</li>
             ');
             $i++;
         }
         if ($remain > 0) {
             echo('
-                <h1>' . $names[$i] . '</h1>
+                <li class="listOrder">' . $names[$i] . '</li>
             ');
             $i++;
             $remain--;
@@ -130,14 +143,20 @@ if($_SESSION['groupType'] == 1) {
         if($newRow) {
             $newRow = false;
             echo('
+                </ol>
                 </div>
             ');
         } else {
             $newRow = true;
-            echo('
+            if($groupNum != $_SESSION['groups']){
+                echo('
+                </ol>
                 </div></div>
-                <p>_____________________________________________________________________________________________________________________</p>
+                <div class="col-sm-12 text-center">
+                </div>
             ');
+            }
+
         }
     }
 } else if($_SESSION['groupType'] == 2) {
@@ -148,77 +167,95 @@ if($_SESSION['groupType'] == 1) {
         if($newRow) {
             echo('
                 <div class="row">
-                <div class="col-sm-4 col-sm-offset-1 text-center nameTheme">
+                <div class="col-sm-4 col-sm-offset-1 text-center alert-success">
             ');
         } else {
             echo('
-                <div class="col-sm-4 col-sm-offset-2 text-center nameTheme">
+                <div class="col-sm-4 col-sm-offset-2 text-center alert-success">
             ');
         }
 
         echo('
                 <h1 class="groupNumber">Group '.$groupNum.'</h1>
+                <ol class="listOrderTop">
             ');
         for ($y = 0; $y < $_SESSION['groups']; $y++) {
             echo('
-                <h1>' . $names[$i] . '</h1>
+                <li class="listOrder">' . $names[$i] . '</li>
             ');
             $i++;
         }
         if($newRow) {
             $newRow = false;
             echo('
+                </ol>
                 </div>
             ');
         } else {
             $newRow = true;
-            echo('
+            if(($groupNum != $groups) || ($remain > 0)){
+                echo('
+                </ol>
                 </div></div>
-                <p>_____________________________________________________________________________________________________________________</p>
-            ');
+                <div class="col-sm-12 text-center">
+                </div>
+                ');
+            }
         }
     }
     if ($remain > 0) {
         if(!$newRow){
             echo('
-                <div class="col-sm-4 col-sm-offset-1 text-center nameTheme">
+                <div class="col-sm-4 col-sm-offset-1 text-center alert-success">
             ');
         }else{
             echo('
                 <div class="row">
-                <div class="col-sm-4 col-sm-offset-4 text-center nameTheme">
+                <div class="col-sm-4 col-sm-offset-4 text-center alert-success">
             ');
         }
 
         echo('
              <h1 class="groupNumber">Extras</h1><h3></h3>
+             <ol class="listOrderTop">
             ');
         for ($x = 0; $x < $remain; $x++) {
             echo('
-                <h1>' . $names[$i] . '</h1>
+                <li class="listOrder">' . $names[$i] . '</li>
             ');
             $i++;
         }
-        if(!$newRow){
-            echo('
-                </div></div>
-                <p>_____________________________________________________________________________________________________________________</p>
-            ');
-        }else{
-            echo('
-                </div></div>
-                <p>_____________________________________________________________________________________________________________________</p>
-            ');
-        }
     }
+    echo ('
+        </ol>
+    ');
 }
-echo('</div></div>');
-$_SESSION['groups'] = 0;
-$_SESSION['groupType'] = 0;
+echo('</div>
+    <div class="row ">
+        <div class="col-sm-12 text-left col-sm-offset-1 listOrderTop">
+            <a href="#randomGroupsModal" class="btn btn-primary" data-toggle="modal">
+                <span aria-hidden="true"  title="Choose Groups"></span><span>Pick Again</span>
+            </a>
+        </div>
+    </div></div>');
+
 
 $OUTPUT->footerStart();
 ?>
-    <!-- Our main javascript file for tool functions -->
     <script src="scripts/randomly.js" type="text/javascript"></script>
+<?php
+if($_SESSION['groupType'] == 0 ){
+    ?>
+    <script type="text/javascript">
+       $(document).ready(function () {
+            $("#randomGroupsModal").modal("show");
+        });
+    </script>
+    <?php
+}
+$_SESSION['groups'] = 0;
+$_SESSION['groupType'] = 0;
+?>
+    <!-- Our main javascript file for tool functions -->
 <?php
 $OUTPUT->footerEnd();

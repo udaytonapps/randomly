@@ -1,14 +1,40 @@
 /* Main CSS file */
 .nameTheme{
-    background-color: #2eeeee;
     font-weight: bold;
+    padding-bottom: 10px;
 }
 
 .groupNumber{
     font-weight: bold;
-    text-decoration: underline;
 }
 
-.borderDashed{
-    border-style: dashed;
+.listOrderTop{
+    font-size: 200%;
+    padding-top: 10px;
+}
+
+.mainCardsSizer{
+    padding-bottom: 1em;
+}
+
+.mainCardStyle{
+    border:1px solid #ccc;
+    border-radius:4px;
+    background-color:#eee;
+}
+
+.mainCardSubBackground{
+    background-color:#fff;
+    padding:3em;
+}
+
+.mainCardTitle{
+    margin-top:0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.mainCardIconSpacing{
+    padding:.7em;
 }
