@@ -1,8 +1,8 @@
 <?php
 $menu = array(
-    'random-student.php' => 'Random Student',
-    'random-order.php' => 'Random Order',
-    'random-groups.php'  => 'Random Groups'
+    'random-student.php' => '<span aria-hidden="true" class="fa fa-lg fa-user"></span> Random Student',
+    'random-order.php' => '<span aria-hidden="true" class="fa fa-lg fa-list-ol"></span> Random Order',
+    'random-groups.php'  => '<span aria-hidden="true" class="fa fa-lg fa-users"></span> Random Groups'
 );
 ?>
 

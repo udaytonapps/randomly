@@ -32,25 +32,28 @@ if ($hasRosters) {
     $name = "No roster found";
 }*/
 
-echo('<div class="container-fluid borderDashed">
+echo('<div class="container-fluid">
      <div class="row">
-        <div class="col-sm-12 text-center">
-            <h2 class = "groupNumber">Result</h2>
+        <div class="col-sm-12 text-left col-sm-offset-1">
+            <h2 class = "groupNumber">Random Student</h2>
         </div>
     </div>
-    <div class="row">
+    <div class="row ">
         <div class="col-sm-12 text-center">
             <h4 class="groupNumber">The randomly chosen Student:</h4>
         </div>
-    </div><div class="row">
-    <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
-    <div class="row">
-        <div class="col-sm-4 col-sm-offset-4 text-center">
+    </div>
+
+    <div class="row ">
+        <div class="col-sm-4 col-sm-offset-4 text-center alert-success">
             <h1 class="nameTheme">'.$name.'</h1>
         </div>
     </div>
-    <p>_____________________________________________________________________________________________________________________</p>
-    <a href="random-student.php" class="btn btn-primary"  data-toggle="modal">Pick again</a>
+    <div class="row ">
+        <div class="col-sm-12 text-left col-sm-offset-1">
+            <a href="random-student.php" class="btn btn-primary"  data-toggle="modal">Pick again</a>
+        </div>
+    </div>
 </div>
 ');
 

@@ -22,24 +22,62 @@ $_SESSION['groups'] = 0;//Data for making groups
 $_SESSION['groupType'] = 0;
 
 echo('
-    <div class="container-fluid borderDashed">
-        <div class="row"><div class="col-sm-8 col-sm-offset-2 text-left">
-            <h4>This simple tool is to designed to help faculty in engage students during classroom sessions. (PLACEHOLDERTEXT)</h4>
-        </div></div>
-        <div class="row"><div class="col-sm-8 col-sm-offset-2 text-left">     
-            <a href="random-student.php" class="btn btn-primary"  data-toggle="modal">Randomly pick a student</a>
-            <p>Randomly picks a student</p>
-        </div></div>
-        <div class="row"><div class="col-sm-8 col-sm-offset-2 text-left">    
-            <a href="random-order.php" class="btn btn-primary"  data-toggle="modal">Randomly order my students</a>
-            <p>Randomly orders students into a list</p>
-        </div></div>
-        <div class="row"><div class="col-sm-8 col-sm-offset-2 text-left">  
-            <a href="random-groups.php" class="btn btn-primary"  data-toggle="modal">Randomly assign groups</a>
-            <p>Randomly groups students into a set number of groups or into groups of a set size</p>
-        </div></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 text-left col-sm-offset-1">
+            <h2 class = "groupNumber">Randomly</h2>
+        </div>
+    <div class="col-sm-10 col-sm-offset-1 text-left">
+        <h4>This simple tool is to designed to help faculty in engage students during classroom sessions. (PLACEHOLDERTEXT)</h4>
     </div>
-');
+        <div class="col-sm-6 col-sm-offset-3 mainCardsSizer">
+            <div class="row mainCardStyle">
+                <div class="col-sm-4 text-center">
+                    <span class="fa fa-4x fa-user mainCardIconSpacing"></span>
+                </div>
+                <div class="col-sm-8 mainCardSubBackground">
+                    <h3 class="mainCardTitle">
+                        <a href="random-student.php">
+                            Random Student
+                        </a>
+                    </h3>
+                    <span>Randomly Picks a student</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-sm-offset-3 mainCardsSizer">
+            <div class="row mainCardStyle">
+                <div class="col-sm-4 text-center">
+                    <span class="fa fa-4x fa fa-list-ol mainCardIconSpacing"></span>
+                </div>
+                <div class="col-sm-8 mainCardSubBackground">
+                    <h3 class="mainCardTitle">
+                        <a href="random-order.php">
+                            Random Order
+                        </a>
+                    </h3>
+                    <span>Randomly orders students into a list</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-sm-offset-3 mainCardsSizer">
+            <div class="row mainCardStyle">
+                <div class="col-sm-4 text-center">
+                    <span class="fa fa-4x fa-users mainCardIconSpacing"></span>
+                </div>
+                <div class="col-sm-8 mainCardSubBackground">
+                    <h3 class="mainCardTitle">
+                        <a href="random-groups.php">
+                            Random Groups
+                        </a>
+                    </h3>
+                    <span>Randomly groups students into a set number of groups or into groups of a set size</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            ');
 
 $OUTPUT->footerStart();
 ?>
