@@ -1,1 +1,60 @@
 /* Main CSS file */
+.nameTheme{
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.rowPadding{
+    padding-bottom: 30px;
+}
+
+.groupNumber{
+    font-weight: bold;
+}
+
+.groupNumberGroups{
+    font-weight: bold;
+    text-align: center;
+}
+
+.listOrderTop{
+    font-size: 150%;
+    padding-top: 10px;
+}
+
+.mainCardsSizer{
+    padding-bottom: 1em;
+}
+
+.mainCardStyle{
+    height: 100px;
+    border:1px solid #ccc;
+    border-radius:4px;
+    background-color:#eee;
+}
+
+.mainCardSubBackground{
+    height: 97px;
+    background-color:#fff;
+    padding:.8em;
+}
+
+.mainCardTitle{
+    margin-top:0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.mainCardIconSpacing{
+    padding:.40em;
+}
+
+.textarea {
+    width: 40px;
+    height:20px;
+}
+
+.groupListings{
+    text-align: center;
+}
