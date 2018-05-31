@@ -19,15 +19,15 @@ $OUTPUT->bodyStart();
 
 include("menu.php");
 
-//$names = array("David", "Ryan", "James", "Julianne", "Leah", "Stephanie", "Aidan", "Paul", "RyMan" , "!!!!", "@@@", ")))))");
-//shuffle($names);
+//$rosterData = array("David", "Ryan", "James", "Julianne", "Leah", "Stephanie", "Aidan", "Paul", "RyMan" , "!!!!", "@@@", ")))))");
+//shuffle($rosterData);
 //$hasRosters = true;
 
 
 $hasRosters = LTIX::populateRoster(false);
 if ($hasRosters) {
     $rosterData = $GLOBALS['ROSTER']->data;
-    $names = shuffle($rosterData);
+    shuffle($rosterData);
 
 echo('
 <div class="container-fluid">
@@ -100,18 +100,18 @@ if($_SESSION['groupType'] > 0){
     </div><div class="row">
     ');
 
-    if($_SESSION['groups'] > sizeof($names)){
-        $_SESSION['groups'] = sizeof($names);
+    if($_SESSION['groups'] > sizeof($rosterData)){
+        $_SESSION['groups'] = sizeof($rosterData);
     }
     if($_SESSION['groups'] < 1){
         $_SESSION['groups'] = 1;
     }
-    $remain = sizeof($names) % $_SESSION['groups'];
+    $remain = sizeof($rosterData) % $_SESSION['groups'];
     $i = 0;
 }
 $newRow = true;
 if($_SESSION['groupType'] == 1) {
-    $inGroup = floor(sizeof($names) / $_SESSION['groups']);
+    $inGroup = floor(sizeof($rosterData) / $_SESSION['groups']);
     for($x = 0; $x < $_SESSION['groups']; $x++){
         $groupNum = $x + 1;
         if($newRow) {
@@ -130,13 +130,13 @@ if($_SESSION['groupType'] == 1) {
             ');
         for ($y = 0; $y < $inGroup; $y++) {
             echo('
-                <li>' . $names[$i]["person_name_full"] . '</li>
+                <li>' . $rosterData[$i]["person_name_full"] . '</li>
             ');
             $i++;
         }
         if ($remain > 0) {
             echo('
-                <li>' . $names[$i]["person_name_full"] . '</li>
+                <li>' . $rosterData[$i]["person_name_full"] . '</li>
             ');
             $i++;
             $remain--;
@@ -161,7 +161,7 @@ if($_SESSION['groupType'] == 1) {
         }
     }
 } else if($_SESSION['groupType'] == 2) {
-    $groups = floor(sizeof($names) / $_SESSION['groups']);
+    $groups = floor(sizeof($rosterData) / $_SESSION['groups']);
     for ($x = 0; $x < $groups; $x++) {
         $groupNum = $x + 1;
 
@@ -182,7 +182,7 @@ if($_SESSION['groupType'] == 1) {
             ');
         for ($y = 0; $y < $_SESSION['groups']; $y++) {
             echo('
-                <li>' . $names[$i]["person_name_full"] . '</li>
+                <li>' . $rosterData[$i]["person_name_full"] . '</li>
             ');
             $i++;
         }
@@ -222,7 +222,7 @@ if($_SESSION['groupType'] == 1) {
             ');
         for ($x = 0; $x < $remain; $x++) {
             echo('
-                <li>' . $names[$i]["person_name_full"] . '</li>
+                <li>' . $rosterData[$i]["person_name_full"] . '</li>
             ');
             $i++;
         }

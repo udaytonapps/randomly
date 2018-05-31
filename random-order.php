@@ -29,8 +29,7 @@ include("menu.php");
 $hasRosters = LTIX::populateRoster(false);
 if ($hasRosters) {
     $rosterData = $GLOBALS['ROSTER']->data;
-    $names = shuffle($rosterData);
-    shuffle($names);
+    shuffle($rosterData);
 echo('
 <div class="container-fluid">
     <div class="row">
@@ -52,7 +51,7 @@ echo('
         <div class="col-sm-4 col-sm-offset-4 text-left alert-success">
         <ol class="listOrderTop">
     ');
-    foreach($names as $student) {echo('
+    foreach($rosterData as $student) {echo('
             <li class="listOrder">'.$student["person_name_full"].'</li>
     ');}
     echo('</ol></div></div>
