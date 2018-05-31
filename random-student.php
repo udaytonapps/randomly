@@ -19,20 +19,26 @@ $OUTPUT->bodyStart();
 
 include("menu.php");
 
-$names = array("David", "Ryan", "James", "Julianne", "Leah", "Stephanie", "Aidan", "Paul", "RyMan");
+//$names = array("David", "Ryan", "James", "Julianne", "Leah", "Stephanie", "Aidan", "Paul", "RyMan" , "!!!!", "@@@", ")))))");
 
-$num = rand (0,sizeof($names) - 1);
-$name = $names[$num];
-/*$hasRosters = LTIX::populateRoster(false);
+//$num = rand (0,sizeof($names) - 1);
+//$name = $names[$num];
+
+$hasRosters = LTIX::populateRoster(false);
 if ($hasRosters) {
     $rosterData = $GLOBALS['ROSTER']->data;
     $num = rand (0,sizeof($rosterData));
     $name = $rosterData[$num];
 } else {
     $name = "No roster found";
-}*/
+}
 
 echo('<div class="container-fluid">
+     <div class="row ">
+        <div class="col-sm-12 text-left col-sm-offset-1">
+            <a href="random-student.php" class="btn btn-primary"  data-toggle="modal"><span aria-hidden="true" class="fa fa-lg fa-refresh"></span> Go again</a>
+        </div>
+    </div>
      <div class="row">
         <div class="col-sm-12 text-left col-sm-offset-1">
             <h2 class = "groupNumber">Random Student</h2>
@@ -40,18 +46,13 @@ echo('<div class="container-fluid">
     </div>
     <div class="row ">
         <div class="col-sm-12 text-center">
-            <h4 class="groupNumber">The randomly chosen Student:</h4>
+            <h4 class="groupNumber">The randomly chosen student:</h4>
         </div>
     </div>
 
     <div class="row ">
         <div class="col-sm-4 col-sm-offset-4 text-center alert-success">
             <h1 class="nameTheme">'.$name.'</h1>
-        </div>
-    </div>
-    <div class="row ">
-        <div class="col-sm-12 text-left col-sm-offset-1">
-            <a href="random-student.php" class="btn btn-primary"  data-toggle="modal">Pick again</a>
         </div>
     </div>
 </div>

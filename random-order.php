@@ -19,22 +19,25 @@ $OUTPUT->bodyStart();
 
 include("menu.php");
 
-$names = array("David", "Ryan", "James", "Julianne", "Leah", "Stephanie", "Aidan", "Paul", "RyMan");
-
+$names = array("David", "Ryan", "James", "Julianne", "Leah", "Stephanie", "Aidan", "Paul", "RyMan" , "!!!!", "@@@", ")))))");
+$hasRosters=true;
 $num = rand (0,sizeof($names) - 1);
-shuffle($names);
-/*$hasRosters = LTIX::populateRoster(false);
-if ($hasRosters) {
-    $rosterData = $GLOBALS['ROSTER']->data;
-    $num = rand (0,sizeof($rosterData));
-    $name = $rosterData[$num];
-} else {
-    $name = "No roster found";
-}*/
 
+
+shuffle($names);
+
+//$hasRosters = LTIX::populateRoster(false);
+if ($hasRosters) {
+   // $rosterData = $GLOBALS['ROSTER']->data;
+    //$names = shuffle($rosterData);
 
 echo('
 <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 text-left col-sm-offset-1">
+            <a href="random-order.php" class="btn btn-primary"  data-toggle="modal"><span aria-hidden="true" class="fa fa-lg fa-refresh"></span> Go again</a>
+        </div>
+    </div>
     <div class="row">
         <div class="col-sm-12 text-left col-sm-offset-1">
             <h2 class = "groupNumber">Random Order</h2>
@@ -46,21 +49,19 @@ echo('
         </div>
     </div>
     <div class="row " >
-        <div class="col-sm-4 col-sm-offset-4 text-center alert-success">
+        <div class="col-sm-4 col-sm-offset-4 text-left alert-success">
         <ol class="listOrderTop">
     ');
     foreach($names as $student) {echo('
             <li class="listOrder">'.$student.'</li>
     ');}
     echo('</ol></div></div>
-    <div class="row ">
-        <div class="col-sm-12 text-left col-sm-offset-1">
-            <a href="random-order.php" class="btn btn-primary"  data-toggle="modal">Pick again</a>
-        </div>
-    </div>
+    
 </div>
 ');
-
+} else {
+    echo ("No roster found");
+}
 $OUTPUT->footerStart();
 ?>
     <!-- Our main javascript file for tool functions -->
