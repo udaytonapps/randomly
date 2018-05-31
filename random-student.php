@@ -19,11 +19,6 @@ $OUTPUT->bodyStart();
 
 include("menu.php");
 
-//$names = array("David", "Ryan", "James", "Julianne", "Leah", "Stephanie", "Aidan", "Paul", "RyMan" , "!!!!", "@@@", ")))))");
-
-//$num = rand (0,sizeof($names) - 1);
-//$name = $names[$num];
-
 $hasRosters = LTIX::populateRoster(false);
 if ($hasRosters) {
     $rosterData = $GLOBALS['ROSTER']->data;

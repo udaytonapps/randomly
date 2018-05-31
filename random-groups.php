@@ -19,11 +19,6 @@ $OUTPUT->bodyStart();
 
 include("menu.php");
 
-//$rosterData = array("David", "Ryan", "James", "Julianne", "Leah", "Stephanie", "Aidan", "Paul", "RyMan" , "!!!!", "@@@", ")))))");
-//shuffle($rosterData);
-//$hasRosters = true;
-
-
 $hasRosters = LTIX::populateRoster(false);
 if ($hasRosters) {
     $rosterData = $GLOBALS['ROSTER']->data;
@@ -161,7 +156,7 @@ if($_SESSION['groupType'] == 1) {
         }
     }
 } else if($_SESSION['groupType'] == 2) {
-    $groups = floor(sizeof($rosterData) / $_SESSION['groups']);
+    $groups = ceil(sizeof($rosterData) / $_SESSION['groups']);
     for ($x = 0; $x < $groups; $x++) {
         $groupNum = $x + 1;
 
@@ -181,9 +176,11 @@ if($_SESSION['groupType'] == 1) {
                 <ol class="listOrderTop">
             ');
         for ($y = 0; $y < $_SESSION['groups']; $y++) {
-            echo('
-                <li>' . $rosterData[$i]["person_name_full"] . '</li>
-            ');
+            if($i < sizeof($rosterData)) {
+                echo('
+                    <li>' . $rosterData[$i]["person_name_full"] . '</li>
+                ');
+            }
             $i++;
         }
         if($newRow) {
@@ -204,29 +201,7 @@ if($_SESSION['groupType'] == 1) {
             }
         }
     }
-    if ($remain > 0) {
-        if(!$newRow){
-            echo('
-                <div class="col-sm-4 col-sm-offset-1 text-left alert-success">
-            ');
-        }else{
-            echo('
-                <div class="row">
-                <div class="col-sm-4 col-sm-offset-4 text-left alert-success">
-            ');
-        }
 
-        echo('
-             <h1 class="groupNumberGroups">Extras</h1><h3></h3>
-             <ol class="listOrderTop">
-            ');
-        for ($x = 0; $x < $remain; $x++) {
-            echo('
-                <li>' . $rosterData[$i]["person_name_full"] . '</li>
-            ');
-            $i++;
-        }
-    }
     echo ('
         </ol>
     ');
