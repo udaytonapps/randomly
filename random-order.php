@@ -19,18 +19,18 @@ $OUTPUT->bodyStart();
 
 include("menu.php");
 
-$names = array("David", "Ryan", "James", "Julianne", "Leah", "Stephanie", "Aidan", "Paul", "RyMan" , "!!!!", "@@@", ")))))");
-$hasRosters=true;
-$num = rand (0,sizeof($names) - 1);
+//$names = array("David", "Ryan", "James", "Julianne", "Leah", "Stephanie", "Aidan", "Paul", "RyMan" , "!!!!", "@@@", ")))))");
+//$hasRosters=true;
+//$num = rand (0,sizeof($names) - 1);
 
 
-shuffle($names);
 
-//$hasRosters = LTIX::populateRoster(false);
+
+$hasRosters = LTIX::populateRoster(false);
 if ($hasRosters) {
-   // $rosterData = $GLOBALS['ROSTER']->data;
-    //$names = shuffle($rosterData);
-
+    $rosterData = $GLOBALS['ROSTER']->data;
+    $names = shuffle($rosterData);
+    shuffle($names);
 echo('
 <div class="container-fluid">
     <div class="row">
@@ -53,7 +53,7 @@ echo('
         <ol class="listOrderTop">
     ');
     foreach($names as $student) {echo('
-            <li class="listOrder">'.$student.'</li>
+            <li class="listOrder">'.$student["person_name_full"].'</li>
     ');}
     echo('</ol></div></div>
     

@@ -28,7 +28,7 @@ $hasRosters = LTIX::populateRoster(false);
 if ($hasRosters) {
     $rosterData = $GLOBALS['ROSTER']->data;
     $num = rand (0,sizeof($rosterData));
-    $name = $rosterData[$num];
+    $name = $rosterData[$num]["person_name_full"];
 } else {
     $name = "No roster found";
 }

@@ -19,15 +19,15 @@ $OUTPUT->bodyStart();
 
 include("menu.php");
 
-$names = array("David", "Ryan", "James", "Julianne", "Leah", "Stephanie", "Aidan", "Paul", "RyMan" , "!!!!", "@@@", ")))))");
-shuffle($names);
-$hasRosters = true;
+//$names = array("David", "Ryan", "James", "Julianne", "Leah", "Stephanie", "Aidan", "Paul", "RyMan" , "!!!!", "@@@", ")))))");
+//shuffle($names);
+//$hasRosters = true;
 
 
-//$hasRosters = LTIX::populateRoster(false);
+$hasRosters = LTIX::populateRoster(false);
 if ($hasRosters) {
- //   $rosterData = $GLOBALS['ROSTER']->data;
- //   $names = shuffle($rosterData);
+    $rosterData = $GLOBALS['ROSTER']->data;
+    $names = shuffle($rosterData);
 
 echo('
 <div class="container-fluid">
@@ -130,13 +130,13 @@ if($_SESSION['groupType'] == 1) {
             ');
         for ($y = 0; $y < $inGroup; $y++) {
             echo('
-                <li>' . $names[$i] . '</li>
+                <li>' . $names[$i]["person_name_full"] . '</li>
             ');
             $i++;
         }
         if ($remain > 0) {
             echo('
-                <li>' . $names[$i] . '</li>
+                <li>' . $names[$i]["person_name_full"] . '</li>
             ');
             $i++;
             $remain--;
@@ -182,7 +182,7 @@ if($_SESSION['groupType'] == 1) {
             ');
         for ($y = 0; $y < $_SESSION['groups']; $y++) {
             echo('
-                <li>' . $names[$i] . '</li>
+                <li>' . $names[$i]["person_name_full"] . '</li>
             ');
             $i++;
         }
@@ -222,7 +222,7 @@ if($_SESSION['groupType'] == 1) {
             ');
         for ($x = 0; $x < $remain; $x++) {
             echo('
-                <li>' . $names[$i] . '</li>
+                <li>' . $names[$i]["person_name_full"] . '</li>
             ');
             $i++;
         }
