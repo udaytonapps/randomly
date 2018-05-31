@@ -28,7 +28,7 @@ echo('
             <h2 class = "groupNumber">Randomly</h2>
         </div>
     <div class="col-sm-10 col-sm-offset-1 text-left">
-        <h4>This simple tool is to designed to help faculty in engage students during classroom sessions. (PLACEHOLDERTEXT)</h4>
+        <h4>This tool allows faculty to randomly pick a student, order students into a list, or create groups.</h4>
     </div>
         <div class="col-sm-6 col-sm-offset-3 mainCardsSizer">
             <div class="row mainCardStyle">
@@ -41,7 +41,7 @@ echo('
                             Random Student
                         </a>
                     </h3>
-                    <span>Randomly Picks a student</span>
+                    <span>Randomly picks a student</span>
                 </div>
             </div>
         </div>
