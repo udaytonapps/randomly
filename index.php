@@ -75,6 +75,21 @@ echo('
                 </div>
             </div>
         </div>
+        <div class="col-sm-6 col-sm-offset-3 mainCardsSizer">
+            <div class="row mainCardStyle">
+                <div class="col-sm-4 text-center">
+                    <span class="fa fa-4x fa-pencil-square-o mainCardIconSpacing"></span>
+                </div>
+                <div class="col-sm-8 mainCardSubBackground">
+                    <h3 class="mainCardTitle">
+                        <a href="random-custom.php">
+                            Random Custom
+                        </a>
+                    </h3>
+                    <span>Randomly chooses from a custom list</span>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
             ');
