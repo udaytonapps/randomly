@@ -20,8 +20,15 @@ $OUTPUT->bodyStart();
 include("menu.php");
 
 $hasRosters = LTIX::populateRoster(false);
+$x = 0;
 if ($hasRosters) {
     $rosterData = $GLOBALS['ROSTER']->data;
+    foreach ($rosterData as $roster){
+        if($roster["roles"] != "Learner"){
+            unset($rosterData[$x]);
+        }
+        $x++;
+    }
     shuffle($rosterData);
 echo('
 <div class="container-fluid">
