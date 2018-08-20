@@ -20,10 +20,17 @@ $OUTPUT->bodyStart();
 include("menu.php");
 
 $hasRosters = LTIX::populateRoster(false);
+$x = 0;
 if ($hasRosters) {
     $rosterData = $GLOBALS['ROSTER']->data;
-    $num = rand (0,sizeof($rosterData) - 1);
-    $name = $rosterData[$num]["person_name_full"];
+    foreach ($rosterData as $roster){
+        if($roster["roles"] != "Learner"){
+            unset($rosterData[$x]);
+        }
+        $x++;
+    }
+    shuffle($rosterData);
+    $name = $rosterData[0]["person_name_full"];
 } else {
     $name = "No roster found";
 }
